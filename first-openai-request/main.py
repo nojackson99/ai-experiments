@@ -1,12 +1,19 @@
 import openai
+import os
+from dotenv import load_dotenv
 
-openai.api_key = "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"
+dotenv_path = '~/.env'
+load_dotenv(dotenv_path)
 
-modelList = openai.Model.list()
+openai_api_key = os.getenv("OPENAI_API_KEY")
+print(openai_api_key)
+openai.api_key = openai_api_key
 
-# Open a file for writing
-with open("output.txt", "w") as file:
-    # Write list of openAI models to output.txt
-    file.write(str(modelList))
+# modelList = openai.Model.list()
+
+# # Open a file for writing
+# with open("output.txt", "w") as file:
+#     # Write list of openAI models to output.txt
+#     file.write(str(modelList))
 
 
