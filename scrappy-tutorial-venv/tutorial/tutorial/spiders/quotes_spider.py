@@ -30,6 +30,26 @@ class QuotesSpider(scrapy.Spider):
         # with open('quotesRawText.txt', 'w') as file:
         #     file.write(text)
 
+        #* To take lines of text from get_lines() yield function and write to a txt file
+        # # Open a file in write mode
+        # with open('quotesRawTextNoWhitespace.txt', 'w') as file:
+        #     # Iterate over each line of text and write it to the file
+        #     for line in get_lines():
+        #         file.write(line + '\n')
+
+        #* To scrape the site and text in a csv with each word in a new line
+        # # Extract all the text from the response
+        # text = response.xpath('string()').extract_first()
+
+        # # Split the text into words after removing any leading or trailing white space
+        # words = [word.strip() for word in text.split() if word.strip()]
+
+        # # Create a Pandas data frame with a single column
+        # df = pd.DataFrame({'words': words})
+
+        # # Write the data frame to a CSV file
+        # df.to_csv('quotes.csv', index=False)
+        
         #* To scrape the site and remove all whitespace and empty lines
         def get_lines():
             # Extract all the text from the response
@@ -61,22 +81,4 @@ class QuotesSpider(scrapy.Spider):
 
         
         
-        #* To take lines of text from get_lines() yield function and write to a txt file
-        # # Open a file in write mode
-        # with open('quotesRawTextNoWhitespace.txt', 'w') as file:
-        #     # Iterate over each line of text and write it to the file
-        #     for line in get_lines():
-        #         file.write(line + '\n')
-
-        #* To scrape the site and text in a csv with each word in a new line
-        # # Extract all the text from the response
-        # text = response.xpath('string()').extract_first()
-
-        # # Split the text into words after removing any leading or trailing white space
-        # words = [word.strip() for word in text.split() if word.strip()]
-
-        # # Create a Pandas data frame with a single column
-        # df = pd.DataFrame({'words': words})
-
-        # # Write the data frame to a CSV file
-        # df.to_csv('quotes.csv', index=False)
+        
