@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Welcome</title>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+	<style>
+		#ep {
+			visibility: hidden;
+			opacity: 0;
+		}
+	</style>
+
+	<script type="text/javascript">
+		(function () {
+			window.$tp = window.$tp || {};
+			window.$tp.auth = window.$tp.auth || {};
+			window.$tp.auth.endpoint = "https://{prefix}.auth.ikaun.com/identity";
+			window.$tp.api = window.$tp.api || {};
+			window.$tp.api.endpoint = "https://api-us2.ikaun.com";
+			window.$tp.storage = window.$tp.storage || {};
+			window.$tp.storage.endpoint = "https://cdn-us2.ikaun.com/tenant-{tenantId}/{fileId}";
+			window.$tp.logging = window.$tp.logging || {};
+			window.$tp.logging.key = "9e5f69d0-8f39-4016-b760-4837a83315d5";
+			window.$tp.version = "1.0.0"
+			if (window.location.hash == "#_clearSessionStorage") {
+				sessionStorage.clear();
+			}
+		})();
+	</script>
+	
+	<link rel="icon" href="https://cdn.ikaun.com/images/ikaun.png" />
+	<script type="text/javascript" src="https://cdn.ikaun.com/files/oidc/oidc-client.min.js"></script>
+	
+
+	<!-- <script src="/static/initial.min.js?v=1.0.1"></script> -->
+	
+	<script src="https://cdn.ikaun.com/files/ikaun/1.0.1/initial.min.js"></script>
+
+	<style id="global-style-override"></style>
+
+	<script>
+		; (function (window, document) {
+			'use strict';
+
+			var file = '/images/svg.html',
+				revision = 8;
+
+			if (!document.createElementNS || !document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect)
+				return true;
+
+			var isLocalStorage = 'localStorage' in window && window['localStorage'] !== null,
+				request,
+				data,
+				insertIT = function () {
+					document.body.insertAdjacentHTML('afterbegin', data);
+				},
+				insert = function () {
+					if (document.body) insertIT();
+					else document.addEventListener('DOMContentLoaded', insertIT);
+				};
+
+			if (isLocalStorage && localStorage.getItem('ikaunSVGCacheRev') == revision) {
+				data = localStorage.getItem('ikaunSVGCache');
+				if (data) {
+					insert();
+					return true;
+				}
+			}
+
+			try {
+				request = new XMLHttpRequest();
+				request.open('GET', file, true);
+				request.onload = function () {
+					if (request.status >= 200 && request.status < 400) {
+						data = request.responseText;
+						insert();
+						if (isLocalStorage) {
+							localStorage.setItem('ikaunSVGCache', data);
+							localStorage.setItem('ikaunSVGCacheRev', revision);
+						}
+					}
+				}
+				request.send();
+			}
+			catch (e) { }
+
+			if (!document.createElementNS || !document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect) {
+				document.createElement('svg');
+				document.createElement('use');
+			}
+
+			if (document.createElementNS && document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect) return true;
+			var uses = document.getElementsByTagName('use'), use;
+			while ((use = uses[0])) {
+				var svg = use.parentNode, img = new Image();
+				img.src = use.getAttribute('data-img');
+				svg.parentNode.replaceChild(img, svg);
+			}
+
+
+		}(window, document));
+	</script>
+</head>
+
+<body>
+	<script type="text/javascript">
+		var vueState = {
+			translations: {}
+		};
+		if (!DOMTokenList.prototype.forEach) {
+			DOMTokenList.prototype.forEach = function (fn, scope) {
+				for (var i = 0, len = this.length; i < len; ++i) {
+					fn.call(scope, this[i], i, this);
+				}
+			}
+		}
+	</script>
+	<div id="unika-overlay"></div>
+	<ep-body>
+	</ep-body>
+</body>
+
+</html>
